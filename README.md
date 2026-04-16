@@ -19,7 +19,6 @@ Python VADER (NLP Service)
 Response bubbles back up
 ```
 
-
 ## Installation & Setup
 
 ### Prerequisites
@@ -31,19 +30,19 @@ Response bubbles back up
 ---
 
 # Terminal 1
-pip install vaderSentiment
-python python_service/nlp_service.py
-
-# Terminal 2
-cd backend 
-npm install 
-node server.js
-
-# Terminal 3
-cd frontend 
-npm install 
-npm run dev
-
 
 pip install vaderSentiment textblob transformers torch
 python -m textblob.download_corpora
+python python_service/nlp_service.py
+
+# Terminal 2
+
+cd backend
+npm install
+node server.js
+
+# Terminal 3
+
+cd frontend
+npm install
+npm run dev
