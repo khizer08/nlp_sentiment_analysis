@@ -1,5 +1,6 @@
 # SentimentAI — Full-Stack NLP Sentiment Analysis App
 
+
 A complete academic NLP project built with **React**, **Node.js/Express**, **Python VADER/TextBlob/BERT**, and **React Native (Expo)** for Android.
 
 ## Architecture (MVC)
