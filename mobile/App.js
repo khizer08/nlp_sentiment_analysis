@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -10,7 +11,7 @@ import AboutScreen    from './src/screens/AboutScreen';
 import { colors } from './src/theme';
 
 const Tab = createBottomTabNavigator();
-
+const TOP_TAB_HEIGHT = 52;
 const TAB_ICONS = { Home: '⊞', Analyzer: '◎', History: '≡', About: '?' };
 
 export default function App() {
@@ -19,20 +20,28 @@ export default function App() {
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused }) => (
-            <Text style={{ fontSize: 18, color: focused ? colors.cyan : colors.textMuted }}>
+            <Text style={{ fontSize: 16, color: focused ? colors.cyan : colors.textMuted }}>
               {TAB_ICONS[route.name]}
             </Text>
           ),
           tabBarActiveTintColor: colors.cyan,
           tabBarInactiveTintColor: colors.textMuted,
           tabBarStyle: {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: TOP_TAB_HEIGHT,
             backgroundColor: colors.surface,
-            borderTopColor: colors.border,
-            borderTopWidth: 1,
-            paddingBottom: 4,
-            height: 58,
+            borderBottomColor: colors.border,
+            borderBottomWidth: 1,
+            borderTopWidth: 0,
+            elevation: 0,
+            shadowOpacity: 0,
           },
-          tabBarLabelStyle: { fontSize: 11, fontWeight: '600' },
+          tabBarItemStyle: { paddingVertical: 4 },
+          tabBarLabelStyle: { fontSize: 11, fontWeight: '700' },
+          sceneStyle: { paddingTop: TOP_TAB_HEIGHT },
           headerStyle: {
             backgroundColor: colors.bg,
             borderBottomColor: colors.border,
@@ -54,10 +63,10 @@ export default function App() {
           ),
         })}
       >
-        <Tab.Screen name="Home"     component={HomeScreen}     options={{ title: 'SentiScope',  tabBarLabel: 'Home' }} />
-        <Tab.Screen name="Analyzer" component={AnalyzerScreen} options={{ title: 'Analyzer',    tabBarLabel: 'Analyze' }} />
-        <Tab.Screen name="History"  component={HistoryScreen}  options={{ title: 'History',     tabBarLabel: 'History' }} />
-        <Tab.Screen name="About"    component={AboutScreen}    options={{ title: 'About',       tabBarLabel: 'About' }} />
+        <Tab.Screen name="Home" component={HomeScreen} options={{ title: 'SentiScope', tabBarLabel: 'Home' }} />
+        <Tab.Screen name="Analyzer" component={AnalyzerScreen} options={{ title: 'Analyzer', tabBarLabel: 'Analyze' }} />
+        <Tab.Screen name="History" component={HistoryScreen} options={{ title: 'History', tabBarLabel: 'History' }} />
+        <Tab.Screen name="About" component={AboutScreen} options={{ title: 'About', tabBarLabel: 'About' }} />
       </Tab.Navigator>
     </NavigationContainer>
   );
