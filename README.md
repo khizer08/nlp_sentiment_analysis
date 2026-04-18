@@ -62,6 +62,7 @@ npm start
 
 ### Build APK
 ```bash
+cd mobile
 npm install -g eas-cli
 eas login
 eas init
