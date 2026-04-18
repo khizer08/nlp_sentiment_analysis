@@ -3,18 +3,22 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text } from 'react-native';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import HomeScreen     from './src/screens/HomeScreen';
 import AnalyzerScreen from './src/screens/AnalyzerScreen';
 import HistoryScreen  from './src/screens/HistoryScreen';
 import AboutScreen    from './src/screens/AboutScreen';
 import { colors } from './src/theme';
+import { TOP_TAB_HEIGHT } from './src/navLayout';
 
 const Tab = createBottomTabNavigator();
-const TOP_TAB_HEIGHT = 52;
 const TAB_ICONS = { Home: '⊞', Analyzer: '◎', History: '≡', About: '?' };
 
-export default function App() {
+function AppContent() {
+  const insets = useSafeAreaInsets();
+  const topReservedSpace = TOP_TAB_HEIGHT + insets.top;
+
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -26,41 +30,26 @@ export default function App() {
           ),
           tabBarActiveTintColor: colors.cyan,
           tabBarInactiveTintColor: colors.textMuted,
+          tabBarPosition: 'bottom',
           tabBarStyle: {
             position: 'absolute',
             top: 0,
             left: 0,
             right: 0,
-            height: TOP_TAB_HEIGHT,
             backgroundColor: colors.surface,
             borderBottomColor: colors.border,
             borderBottomWidth: 1,
             borderTopWidth: 0,
             elevation: 0,
             shadowOpacity: 0,
+            paddingTop: insets.top,
+            height: topReservedSpace,
           },
           tabBarItemStyle: { paddingVertical: 4 },
           tabBarLabelStyle: { fontSize: 11, fontWeight: '700' },
-          sceneStyle: { paddingTop: TOP_TAB_HEIGHT },
-          headerStyle: {
-            backgroundColor: colors.bg,
-            borderBottomColor: colors.border,
-            borderBottomWidth: 1,
-            elevation: 0,
-            shadowOpacity: 0,
-          },
-          headerTintColor: colors.textPrimary,
-          headerTitleStyle: { fontWeight: '700', fontSize: 17 },
-          headerRight: () => (
-            <Text style={{
-              color: colors.cyan, fontSize: 11, fontWeight: '700',
-              marginRight: 16, backgroundColor: colors.cyanDim,
-              paddingHorizontal: 8, paddingVertical: 3,
-              borderRadius: 99, borderWidth: 1, borderColor: colors.cyan, overflow: 'hidden',
-            }}>
-              NLP
-            </Text>
-          ),
+          sceneContainerStyle: { paddingTop: 0 },
+          sceneStyle: { paddingTop: 0 },
+          headerShown: false,
         })}
       >
         <Tab.Screen name="Home" component={HomeScreen} options={{ title: 'SentiScope', tabBarLabel: 'Home' }} />
@@ -69,5 +58,13 @@ export default function App() {
         <Tab.Screen name="About" component={AboutScreen} options={{ title: 'About', tabBarLabel: 'About' }} />
       </Tab.Navigator>
     </NavigationContainer>
+  );
+}
+
+export default function App() {
+  return (
+    <SafeAreaProvider>
+      <AppContent />
+    </SafeAreaProvider>
   );
 }
