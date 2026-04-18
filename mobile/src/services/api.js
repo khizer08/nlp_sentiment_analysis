@@ -4,7 +4,7 @@ const BASE_URL = "https://sentiment-analysis-mlwn.onrender.com";
 
 const api = axios.create({
   baseURL: BASE_URL,
-  timeout: 15000,
+  timeout: 40000,
 });
 
 // Analyze sentiment
