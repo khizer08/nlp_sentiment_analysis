@@ -16,12 +16,11 @@
       "package": "com.sentiscope.nlp",
       "versionCode": 1
     },
+    "owner": "sentiment",
     "extra": {
-      "apiBaseUrl": "http://192.168.0.4:3001",
       "eas": {
-        "projectId": "e9fd360c-1267-447b-9799-27ada34fbc23"
+        "projectId": "0c1e43a6-4120-4f47-87b3-5b8cc7e2bf0c"
       }
-    },
-    "owner": "syed008"
+    }
   }
 }
