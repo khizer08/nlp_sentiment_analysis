@@ -117,7 +117,7 @@ export default function AnalyzerScreen() {
           <View style={styles.centerCard}>
             <ActivityIndicator size="large" color={colors.cyan} />
             <Text style={styles.loadingText}>Analyzing sentiment…</Text>
-            <Text style={styles.loadingSubtext}>Running VADER · TextBlob · BERT</Text>
+            <Text style={styles.loadingSubtext}>Running VADER · TextBlob</Text>
           </View>
         )}
 

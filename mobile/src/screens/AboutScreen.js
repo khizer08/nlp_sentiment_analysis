@@ -11,11 +11,11 @@ const sections = [
   },
   {
     title: 'Multi-Model Approach',
-    content: 'This system combines three models:\n\n• VADER — Rule-based, optimized for social media text, handles emojis and slang.\n\n• TextBlob — Polarity-based, scores between -1 and +1 for general language.\n\n• BERT (DistilBERT) — Deep learning, understands context for highly accurate predictions.',
+    content: 'This system combines two models:\n\n• VADER — Rule-based, optimized for social media text, handles emojis and slang.\n\n• TextBlob — Polarity-based, scores between -1 and +1 for general language.',
   },
   {
     title: 'Final Score Calculation',
-    content: 'All three models analyze the input independently. The average compound score determines the final result:\n\n≥ 0.05  →  Positive\n≤ -0.05  →  Negative\nOtherwise  →  Neutral\n\nConfidence is averaged across all three models.',
+    content: 'Both models analyze the input independently. The average compound score determines the final result:\n\n≥ 0.05  →  Positive\n≤ -0.05  →  Negative\nOtherwise  →  Neutral\n\nConfidence is averaged across all two models.',
   },
 ];
 
@@ -23,7 +23,7 @@ const pipeline = [
   { step: '01', title: 'User Input',      desc: 'Text entered in the app' },
   { step: '02', title: 'HTTP POST',       desc: 'Axios calls /api/analyze' },
   { step: '03', title: 'Node.js',         desc: 'Validates, calls Python' },
-  { step: '04', title: 'Python NLP',      desc: 'VADER + TextBlob + BERT' },
+  { step: '04', title: 'Python NLP',      desc: 'VADER + TextBlob ' },
   { step: '05', title: 'Aggregation',     desc: 'Scores averaged' },
   { step: '06', title: 'JSON Response',   desc: 'Sentiment returned' },
 ];
@@ -80,7 +80,7 @@ export default function AboutScreen() {
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Tech Stack</Text>
           <View style={styles.stackGrid}>
-            {['React Native', 'Expo', 'Node.js', 'Express', 'Python', 'VADER', 'TextBlob', 'BERT', 'REST API'].map((t) => (
+            {['React Native', 'Expo', 'Node.js', 'Express', 'Python', 'VADER', 'TextBlob', 'REST API'].map((t) => (
               <View key={t} style={styles.stackChip}>
                 <Text style={styles.stackChipText}>{t}</Text>
               </View>

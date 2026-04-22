@@ -6,7 +6,7 @@ import { colors, spacing, radius, typography } from '../theme';
 import { getScreenTopPadding } from '../navLayout';
 
 const features = [
-  { icon: '🧠', title: 'Multi-Model NLP',   desc: 'VADER + TextBlob + BERT combined' },
+  { icon: '🧠', title: 'Multi-Model NLP',   desc: 'VADER + TextBlob combined' },
   { icon: '⚡', title: 'Real-time',          desc: 'Instant results via REST API' },
   { icon: '📊', title: 'Detailed Scores',   desc: 'Confidence, compound, model breakdown' },
   { icon: '📜', title: 'History',            desc: 'Review all past analyses' },
@@ -26,7 +26,7 @@ export default function HomeScreen() {
         <View style={styles.hero}>
           <View style={styles.pill}>
             <View style={styles.dot} />
-            <Text style={styles.pillText}>NLP ACADEMIC PROJECT</Text>
+            <Text style={styles.pillText}>ACADEMIC PROJECT</Text>
           </View>
 
           <Text style={styles.heroTitle}>
@@ -34,7 +34,7 @@ export default function HomeScreen() {
           </Text>
 
           <Text style={styles.heroSub}>
-            Paste any text and get instant sentiment classification using VADER, TextBlob and BERT.
+            Paste any text and get instant sentiment classification using VADER and TextBlob.
           </Text>
 
           <TouchableOpacity style={styles.ctaBtn} activeOpacity={0.8} onPress={() => navigation.navigate('Analyzer')}>
@@ -62,7 +62,7 @@ export default function HomeScreen() {
               { label: '→', arrow: true },
               { label: 'Node.js',      sub: 'Backend\nAPI',  color: colors.positive },
               { label: '→', arrow: true },
-              { label: 'Python NLP',   sub: 'VADER+\nBERT+TextBlob',   color: colors.neutral },
+              { label: 'Python NLP',   sub: 'VADER+\nTextBlob',   color: colors.neutral },
             ].map((item, i) =>
               item.arrow ? (
                 <Text key={i} style={styles.archArrow}>→</Text>
